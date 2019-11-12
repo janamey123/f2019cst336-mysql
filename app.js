@@ -1,17 +1,17 @@
 const express = require('express');
-const router = express.Router();
+const app = express.Router();
 const mysql = require('mysql');
 
-router.get('/quotes', function (req, res, next) {
+app.get('/quotes', function (req, res, next) {
 
     // Get a query string value for filter
     const nameFilter = req.query.name;
 
     const connection = mysql.createConnection({
-        host: 'p2d0untihotgr5f6.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-        user: 'zsn9kncqtvumywkk',
-        password: 'jrj24hhp4uchfj03',
-        database: 'pvfhxur2aptwj0sr'
+        host: 'gmgcjwawatv599gq.cbetxkdyhwsb.us-east-1.rds.amazonaws.com\t',
+        user: 'vr51fr35ztycmd35',
+        password: 'pfoyhzg1z1yusckl',
+        database: 's0potvjirbd4ea7f'
     });
 
     connection.connect();
@@ -36,4 +36,9 @@ WHERE a.firstName LIKE '${nameFilter}'
 
 });
 
-module.exports = router;
+module.exports = app;
+
+// running server
+app.listen(process.env.PORT || 3000, process.env.IP, function () {
+    console.log("Express server is running...");
+});
